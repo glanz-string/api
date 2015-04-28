@@ -1,0 +1,7 @@
+<form action="/admin/create" method="post">
+<input type="text" name="title">
+<textarea name="info">
+</textarea>
+<input type="submit" value="送信">
+<input type="hidden" name="<%= request_forgery_protection_token.to_s %>" value="<%= form_authenticity_token %>">
+</form>

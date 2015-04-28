@@ -53,4 +53,9 @@ Rails.application.routes.draw do
   #     # (app/controllers/admin/products_controller.rb)
   #     resources :products
   #   end
+  get 'admin/edit' => 'concerts#edit'
+  post 'admin/create' => 'concerts#create'
+  get '/' => 'concerts#edit'
+  get 'admin/show' => 'concerts#show'
+  get 'admin/login(/:id)' => 'sessions#login'
 end
