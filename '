@@ -53,15 +53,11 @@ Rails.application.routes.draw do
   #     # (app/controllers/admin/products_controller.rb)
   #     resources :products
   #   end
-
-  resources :users
   resources :sessions, only: [ :new, :create, :destroy ]
   get 'admin/edit' => 'concerts#edit'
   post 'admin/create' => 'concerts#create'
   get '/' => 'concerts#edit'
-  match '/signup', to: 'users#new', via: 'get'
-  match '/show', to: 'concerts#show', via: 'get'
-  match '/signin', to: 'sessions#new', via: 'get'
-  match '/signout', to: 'sessions#destroy', via: 'delete'
-   
+  get 'admin/show' => 'concerts#show'
+  get 'admin/signin' => 'sessions#new'
+  get 'admin/signout' => 'sessions#destroy'
 end
