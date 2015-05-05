@@ -1,6 +1,7 @@
 <html>
 <body>
 <h1>てすと</h1>
+<p><%= @result %></p>
 <%= form_for(:session, url: sessions_path) do |f| %>
   <%= f.label :email %>
   <%= f.text_field :email %>

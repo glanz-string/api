@@ -12,8 +12,13 @@ class UsersController < ApplicationController
     end
   end
   def show
-    @users = User.all
-    render 'show'
+    @auth = authenticated_user?
+    if (authenticated_user?)
+      @users = User.all
+      render 'show'
+    else 
+      render 'sessions/new'
+    end
   end
   private
     def user_params
