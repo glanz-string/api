@@ -51,6 +51,7 @@ test:
 production:
   <<: *default
   database: glanz
-  username: root
-  password: <%= ENV['GLANZ_DATABASE_PASSWORD'] %>
+  username: glanz
+  password: 37977298
+  socket: /var/lib/mysql/mysql.sock
 #  password: 37977298

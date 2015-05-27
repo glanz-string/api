@@ -1,23 +1,31 @@
 class ConcertsController < ApplicationController
-	def show
-		@concerts = Concert.all
-		render 'concerts/show'
+  before_action :authenticated_user!
+	def index
+	  @concerts = Concert.all
+	  render 'concerts/index'
 	end
 
 	def create
-		concert = Concert.new
+	  concert = Concert.new
 		concert.title = params[:title]
 		concert.info = params[:info]
 		concert.save
-		render 'concerts/confirm'
+		redirect_to '/concerts'
 	end
 
-	def edit
-		render 'concerts/form'
+	def new
+		render 'concerts/new'
 	end
 
 	def delete
 		
 	end
 
+  private
+    def authenticated_user!
+      unless authenticated_user?
+        redirect_to '/signin'
+      end
+      
+    end
 end

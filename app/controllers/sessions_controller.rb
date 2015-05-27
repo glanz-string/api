@@ -5,23 +5,15 @@ class SessionsController < ApplicationController
 	end
 
   def create
-    user = User.find_by(email: params[:session][:email].downcase)
+    user = User.find_by(email: params[:email].downcase)
  
 
-    if (user.authenticate(params[:session][:password])) then
+    if (user.authenticate(params[:password])) then
       authenticate_user
-    end
-
-
-
-    @result = authenticated_user?
-
-    # session[]
-    # if user && user.authenticate(params[:session][:email])
-    #   redirect_to 'users#show'
-    # else
+      redirect_to '/concerts'
+    else
       render 'new'
-    # end
+    end
   end
 
   def destroy

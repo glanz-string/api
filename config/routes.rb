@@ -1,4 +1,6 @@
 Rails.application.routes.draw do
+  get 'index/index'
+
   # The priority is based upon order of creation: first created -> highest priority.
   # See how all your routes lay out with "rake routes".
 
@@ -54,14 +56,23 @@ Rails.application.routes.draw do
   #     resources :products
   #   end
 
-  resources :users
-  resources :sessions, only: [ :new, :create, :destroy ]
-  get 'admin/edit' => 'concerts#edit'
-  post 'admin/create' => 'concerts#create'
-  get '/' => 'concerts#edit'
+  #resources :users
+  #resources :sessions, only: [ :new, :create, :destroy ]
+  get '/' => 'concerts#index'
+
+  get '/users/new' => 'users#new'
+  get '/users' => 'users#index'
+  post '/users' => 'users#create'
+  delete '/users/:id' => 'users#destroy'
+
+  get 'concerts/edit' => 'concerts#edit'
+  get 'concerts/new' => 'concerts#new'
+  post 'concerts/create' => 'concerts#create'
+  match 'concerts/', to: 'concerts#index', via: 'get'
+
   match '/signup', to: 'users#new', via: 'get'
-  match '/show', to: 'concerts#show', via: 'get'
   match '/signin', to: 'sessions#new', via: 'get'
+  match '/signin', to: 'sessions#create', via: 'post'
   match '/signout', to: 'sessions#destroy', via: 'delete'
    
 end

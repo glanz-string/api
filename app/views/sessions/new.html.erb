@@ -2,15 +2,14 @@
 <body>
 <h1>てすと</h1>
 <p><%= @result %></p>
-<%= form_for(:session, url: sessions_path) do |f| %>
-  <%= f.label :email %>
-  <%= f.text_field :email %>
-
-  <%= f.label :password %>
-  <%= f.password_field :password %>
-  <%= f.submit "Sign In" %>
-
+<%= form_tag("/signin") do %>
+  <%= label_tag :email %>
+  <%= text_field_tag :email %>
+  <%= label_tag :password %>
+  <%= password_field_tag :password %>
+  <%= submit_tag "Sign In" %>
 <% end %>
+
 <p>New user? <%= link_to "Sign up now!", signup_path %></p>
 
 </body>

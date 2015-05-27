@@ -1,24 +1,18 @@
-<html>
-<body>
 <h1>Sign up</h1>
-
 <div>
-  <%= form_for(@user) do |f| %>
+<%= form_tag("/users", method: "post") do %>
   <%= render 'shared/error_messages' %>
-  <%= f.label :name %>
-  <%= f.text_field :name %>
-
-  <%= f.label :email %>
-  <%= f.text_field :email %>
-
-  <%= f.label :password %>
-  <%= f.password_field :password %>
-
-  <%= f.label :password_confirmation, "Confirmation" %>
-  <%= f.password_field :password_confirmation %>
-
-  <%= f.submit "Create my account" %>
-  <% end %>
+  <%= label_tag(:name) %> 
+  <%= text_field_tag(:name) %>
+  <%= label_tag(:email) %> 
+  <%= text_field_tag(:email) %>
+  <%= label_tag(:password) %> 
+  <%= password_field_tag(:password) %>
+  <%= label_tag(:password_confirmation) %> 
+  <%= password_field_tag(:password_confirmation) %>
+  <%= submit_tag("Create my account") %>
+<% end %>
 </div>
-</body>
-</html>
+<div>
+
+</div>
