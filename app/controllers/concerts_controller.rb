@@ -24,7 +24,7 @@ class ConcertsController < ApplicationController
   private
     def authenticated_user!
       unless authenticated_user?
-        redirect_to '/signin'
+        redirect_to 'signin'
       end
       
     end
