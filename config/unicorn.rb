@@ -4,7 +4,7 @@ worker_processes Integer(ENV["WEB_CONCURRENCY"] || 3)
 timeout 15
 preload_app true
 
-listen File.expand_path("/tmp/unicorn.#{APP_NAME}.sock", ENV['RAILS_ROOT']);
+listen File.expand_path("tmp/sockets/unicorn.#{APP_NAME}.sock", ENV['RAILS_ROOT']);
 pid File.expand_path("tmp/pids/unicorn.pid", ENV['RAILS_ROOT']);
 
 before_fork do |server, worker|
@@ -24,6 +24,14 @@ after_fork do |server, worker|
 
   defined?(ActiveRecord::Base) and
     ActiveRecord::Base.establish_connection
+end
+
+# memcachedのcacheリセット
+after_fork do |server, worker|
+  if defined?(ActiveSupport::Cache::DalliStore) && Rails.cache.is_a?(ActiveSupport::Cache::DalliStore)
+    Rails.cache.reset
+    ObjectSpace.each_object(ActionDispatch::Session::DalliStore) { |obj| obj.reset }
+  end
 end
 
 stderr_path File.expand_path('log/unicorn.log', ENV['RAILS_ROOT'])
