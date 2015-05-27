@@ -25,7 +25,7 @@ class ConcertsController < ApplicationController
     def authenticated_user!
       unless authenticated_user?
         #redirect_to '/signin'
-        redirect_to :controller => 'signin' :action => 'new'
+        redirect_to :controller => 'sessions', :action => 'new'
       end
       
     end
