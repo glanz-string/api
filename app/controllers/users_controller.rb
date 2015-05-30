@@ -8,7 +8,7 @@ class UsersController < ApplicationController
   def create
     @user = User.new(user_params)
     if @user.save
-      redirect_to '/users'
+      redirect_to controller: 'users', action: 'index'
     else
       render 'new'  
     end
@@ -19,7 +19,7 @@ class UsersController < ApplicationController
   end
   def destroy
     User.find(params[:id]).destroy
-    redirect_to '/users'
+    redirect_to controller: 'users', action: 'index'
   end
   private
     def user_params
@@ -28,7 +28,7 @@ class UsersController < ApplicationController
     end
     def authenticated_user!
       unless authenticated_user?
-        redirect_to '/signin'
+        redirect_to controller: 'sessions', action: 'new'
       end 
     end
 end

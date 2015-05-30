@@ -15,8 +15,8 @@ default: &default
   pool: 5
   username: glanz
   password: test
-  socket: /var/lib/mysql/mysql.sock
-#  socket: /private/tmp/mysql.sock
+#  socket: /var/lib/mysql/mysql.sock
+  socket: /private/tmp/mysql.sock
 development:
   <<: *default
   database: glanz

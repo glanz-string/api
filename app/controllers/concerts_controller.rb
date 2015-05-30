@@ -10,7 +10,7 @@ class ConcertsController < ApplicationController
 		concert.title = params[:title]
 		concert.info = params[:info]
 		concert.save
-		redirect_to '/concerts'
+    redirect_to controller: 'concerts', action: 'index'
 	end
 
 	def new
@@ -24,7 +24,6 @@ class ConcertsController < ApplicationController
   private
     def authenticated_user!
       unless authenticated_user?
-        #redirect_to '/signin'
         redirect_to :controller => 'sessions', :action => 'new'
       end
       
