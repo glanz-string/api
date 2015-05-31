@@ -14,6 +14,7 @@ class ConcertsController < ApplicationController
 	end
 
 	def new
+    @relative_root = ENV['RAILS_RELATIVE_URL_ROOT']
 		render 'concerts/new'
 	end
 
