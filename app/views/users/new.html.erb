@@ -1,6 +1,6 @@
 <h1>Sign up</h1>
 <div>
-<%= form_tag("/users", method: "post") do %>
+<%= form_tag("#{relative_root}/users", method: "post") do %>
   <%= render 'shared/error_messages' %>
   <%= label_tag(:name) %> 
   <%= text_field_tag(:name) %>
