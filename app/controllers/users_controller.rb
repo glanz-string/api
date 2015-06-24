@@ -18,7 +18,7 @@ class UsersController < ApplicationController
     render 'index'
   end
   def destroy
-    if User.all.length > 0
+    if User.all.length > 1
       User.find(params[:id]).destroy
     end
     redirect_to controller: 'users', action: 'index'
