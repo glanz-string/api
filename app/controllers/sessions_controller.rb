@@ -8,6 +8,7 @@ class SessionsController < ApplicationController
   def create
     user = User.find_by(email: params[:email].downcase) 
 
+    return unless user.present?
     if (user.authenticate(params[:password])) then
       authenticate_user
       redirect_to_index

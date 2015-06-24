@@ -1,5 +1,5 @@
 class UsersController < ApplicationController
-  before_action :authenticated_user!
+#  before_action :authenticated_user!
   
   def new 
     @user = User.new
