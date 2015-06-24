@@ -9,11 +9,23 @@ module SessionsHelper
 
   end 
 
+  def unauthenticate_user
+    cookies.delete(:access_token)
+    session[:access_token] = nil
+
+  end 
+
   def authenticated_user?
   	if (session[:access_token]) && (cookies[:access_token] == session[:access_token])
   		return true
   	else
   		return false
   	end
+  end
+
+  def unauthenticated_user
+    unless authenticated_user?
+      yield
+    end
   end
 end

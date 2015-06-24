@@ -2,7 +2,7 @@
 <body>
 <h1>てすと</h1>
 <p><%= @result %></p>
-<%= form_tag("/signin") do %>
+<%= form_tag("#{relative_root}/signin") do %>
   <%= label_tag :email %>
   <%= text_field_tag :email %>
   <%= label_tag :password %>
@@ -10,7 +10,7 @@
   <%= submit_tag "Sign In" %>
 <% end %>
 
-<p>New user? <%= link_to "Sign up now!", signup_path %></p>
+<p>New user? <%= link_to "Sign up now!", "#{relative_root}/signup" %></p>
 
 </body>
 </html>

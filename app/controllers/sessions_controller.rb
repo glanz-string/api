@@ -17,7 +17,8 @@ class SessionsController < ApplicationController
   end
 
   def destroy
-
+    unauthenticate_user
+    redirect_to_index
   end
   
   def redirect_to_index

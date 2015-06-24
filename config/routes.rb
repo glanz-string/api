@@ -58,7 +58,7 @@ Rails.application.routes.draw do
 
   #resources :users
   #resources :sessions, only: [ :new, :create, :destroy ]
-  get '/' => 'concerts#index'
+  get '/' => 'index#index'
 
   get '/users/new' => 'users#new'
   get '/users' => 'users#index'
@@ -69,10 +69,11 @@ Rails.application.routes.draw do
   get 'concerts/new' => 'concerts#new'
   post 'concerts/create' => 'concerts#create'
   match 'concerts/', to: 'concerts#index', via: 'get'
+  match 'concerts/json/', to: 'concerts#concerts_json', via: 'get'
 
   match '/signup', to: 'users#new', via: 'get'
   match '/signin', to: 'sessions#new', via: 'get'
   match '/signin', to: 'sessions#create', via: 'post'
-  match '/signout', to: 'sessions#destroy', via: 'delete'
+  match '/signout', to: 'sessions#destroy', via: 'get'
    
 end

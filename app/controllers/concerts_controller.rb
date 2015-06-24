@@ -1,11 +1,23 @@
 class ConcertsController < ApplicationController
-  before_action :authenticated_user!
 	def index
+    unauthenticated_user do
+      redirect_to_index
+      return
+    end
 	  @concerts = Concert.all
 	  render 'concerts/index'
 	end
 
+  def concerts_json
+    @concerts = Concert.all
+    render json: @concerts
+  end
+
 	def create
+    unauthenticated_user do
+      redirect_to_index
+      return
+    end
 	  concert = Concert.new
 		concert.title = params[:title]
 		concert.info = params[:info]
@@ -14,19 +26,20 @@ class ConcertsController < ApplicationController
 	end
 
 	def new
+    unauthenticated_user do
+      redirect_to_index
+      return
+    end
     @relative_root = ENV['RAILS_RELATIVE_URL_ROOT']
 		render 'concerts/new'
 	end
 
 	def delete
+    unauthenticated_user do
+      redirect_to_index
+      return
+    end
 		
 	end
 
-  private
-    def authenticated_user!
-      unless authenticated_user?
- #       redirect_to :controller => 'sessions', :action => 'new'
-      end
-      
-    end
 end
