@@ -22,6 +22,6 @@ class SessionsController < ApplicationController
   end
   
   def redirect_to_index
-    redirect_to controller: 'concerts', action: 'index'
+    redirect_to controller: 'index', action: 'index'
   end
 end
