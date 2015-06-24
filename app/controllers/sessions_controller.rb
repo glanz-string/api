@@ -17,7 +17,7 @@ class SessionsController < ApplicationController
       authenticate_user
       redirect_to_index
     else
-      render 'new'
+      render 'sessions/new'
     end
   end
 
