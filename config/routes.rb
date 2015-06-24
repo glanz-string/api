@@ -63,7 +63,7 @@ Rails.application.routes.draw do
   get '/users/new' => 'users#new'
   get '/users' => 'users#index'
   post '/users' => 'users#create'
-  delete '/users/:id' => 'users#destroy'
+  get '/users/:id' => 'users#destroy'
 
   get 'concerts/edit' => 'concerts#edit'
   get 'concerts/new' => 'concerts#new'

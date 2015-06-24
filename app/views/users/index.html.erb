@@ -2,6 +2,6 @@
 <ul>
 <% @users.each do |user| %>
 <li><%= user[:name] %>, <%= user[:email] %>
-  <%= link_to "delete", "#{ relative_root}/users/#{user[:id]}", method: :delete, data: { confirm: "You sure?" } %></li>
+  <%= link_to "delete", "#{ relative_root}/users/#{user[:id]}", method: :get, data: { confirm: "You sure?" } %></li>
 <% end %>
 </ul>
